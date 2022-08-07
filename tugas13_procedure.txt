@@ -1,0 +1,20 @@
+
+
+DELIMITER //
+ CREATE PROCEDURE penilaian(nimMhs CHAR(8))
+   BEGIN
+   SELECT CASE 
+   WHEN (semester_1 >= 0 AND semester_1 <= 1) THEN
+     'Serius kuliah g sih ?' 
+   WHEN (semester_1 > 1 AND semester_1 <= 2)  THEN
+      'Kebanyakan main' 
+   WHEN (semester_1 > 2 AND semester_1 <= 3)  THEN
+     'Berusaha lagi' 
+   WHEN (semester_1 > 3 AND semester_1 <= 4)  THEN
+      'Mantap, Pertahankan!' 
+   ELSE
+      'Nilai tidak sesuai' 
+   END AS hasil 
+   from nilai_mahasiswa WHERE nim = nimMhs ;
+   END//
+DELIMITER ;
